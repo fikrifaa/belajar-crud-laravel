@@ -38,7 +38,6 @@
             </tr>
         </tbody>
     </table>
-
 </div>
 <!-- AKHIR DATA -->
 @endsection
