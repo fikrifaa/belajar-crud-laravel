@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MahasiswaController extends Controller
 {
@@ -12,7 +13,8 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.index');
+        $data = mahasiswa::orderBy('nim', 'desc')->get();
+        return view('mahasiswa.index')->with('data', $data);
     }
 
     /**
@@ -28,13 +30,28 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        Session::flash('nim', $request->nim);
+        Session::flash('nama', $request->nama);
+        Session::flash('jurusan', $request->jurusan);
+
+        $request->validate([
+            'nim' => 'required|numeric|unique:mahasiswa,nim',
+            'nama' => 'required',
+            'jurusan' => 'required',
+        ], [
+            'nim.required' => 'NIM Wajib Diisi!',
+            'nim.numeric' => 'NIM Wajib Dalam Bentuk Angka!',
+            'nim.unique' => 'NIM Yang Diisikan Sudah Ada Di Dalam Database!',
+            'nama.required' => 'Nama Wajib Diisi!',
+            'jurusan.required' => 'Jurusan Wajib Diisi!',
+        ]);
         $data = [
             'nim' => $request->nim,
             'nama' => $request->nama,
             'jurusan' => $request->jurusan,
         ];
         mahasiswa::create($data);
-        return 'HI';
+        return redirect()->to('mahasiswa')->with('success', 'Berhasil Menambahkan Data');
     }
 
     /**
@@ -50,7 +67,7 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('mahasiswa.edit');
     }
 
     /**
