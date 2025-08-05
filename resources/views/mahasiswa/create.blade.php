@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="jurusan" class="col-sm-2 col-form-label">Jurusan</label>
+            <label for="jurusan" class="col-sm-2 col-form-label">Program Studi</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name='jurusan' value="{{ Session::get('jurusan') }}"
                     id="jurusan">
@@ -30,6 +30,5 @@
             </div>
         </div>
 </form>
-
 <!-- AKHIR FORM -->
 @endsection

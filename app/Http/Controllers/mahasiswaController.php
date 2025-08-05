@@ -39,11 +39,11 @@ class MahasiswaController extends Controller
             'nama' => 'required',
             'jurusan' => 'required',
         ], [
-            'nim.required' => 'NIM Wajib Diisi!',
+            'nim.required' => 'NIM Tidak Boleh Kosong!',
             'nim.numeric' => 'NIM Wajib Dalam Bentuk Angka!',
             'nim.unique' => 'NIM Yang Diisikan Sudah Ada Di Dalam Database!',
-            'nama.required' => 'Nama Wajib Diisi!',
-            'jurusan.required' => 'Jurusan Wajib Diisi!',
+            'nama.required' => 'Nama Tidak Boleh Kosong',
+            'jurusan.required' => 'Jurusan/Program Studi Wajib Diisi!',
         ]);
         $data = [
             'nim' => $request->nim,
@@ -51,7 +51,7 @@ class MahasiswaController extends Controller
             'jurusan' => $request->jurusan,
         ];
         mahasiswa::create($data);
-        return redirect()->to('mahasiswa')->with('success', 'Berhasil Menambahkan Data');
+        return redirect()->to('mahasiswa')->with('success', 'Berhasil Menambahkan Data.');
     }
 
     /**
@@ -59,7 +59,7 @@ class MahasiswaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('/');
     }
 
     /**
@@ -75,7 +75,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return view('/');
     }
 
     /**
@@ -83,6 +83,6 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return view('/');
     }
 }

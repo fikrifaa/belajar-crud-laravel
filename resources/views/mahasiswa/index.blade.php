@@ -20,7 +20,7 @@
         <thead>
             <tr>
                 <th class="col-md-1">No</th>
-                <th class="col-md-3">NIM</th>
+                <th class="col-md-3">Nomor Induk Mahasiswa (NIM)</th>
                 <th class="col-md-4">Nama</th>
                 <th class="col-md-2">Jurusan</th>
                 <th class="col-md-2">Action</th>
