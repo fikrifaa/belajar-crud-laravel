@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $data = mahasiswa::orderBy('nim', 'desc')->get();
+        $data = mahasiswa::orderBy('nim', 'desc')->paginate(5);
         return view('mahasiswa.index')->with('data', $data);
     }
 
@@ -67,7 +67,8 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        return view('mahasiswa.edit');
+        $data = mahasiswa::where('nim', $id)->first();
+        return view('mahasiswa.edit')->with('data', $data);
     }
 
     /**

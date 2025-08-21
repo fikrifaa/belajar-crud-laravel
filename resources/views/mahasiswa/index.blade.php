@@ -1,4 +1,4 @@
-@extends('layout.template');
+@extends('layout.template')
 <!-- START DATA -->
 @section('content')
 <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -27,20 +27,23 @@
             </tr>
         </thead>
         <tbody>
+            <?php $i = $data -> firstItem() ?>
             @foreach ($data as $item)
              <tr>
-                <td>1</td>
+                <td>{{ $i }}</td>
                 <td>{{ $item -> nim }}</td>
                 <td>{{ $item -> nama }}</td>
                 <td>{{ $item -> jurusan }}</td>
                 <td>
-                    <a href='' class="btn btn-warning btn-sm">Edit</a>
+                    <a href='{{ url('mahasiswa/'.$item -> nim.'/edit') }}' class="btn btn-warning btn-sm">Edit</a>
                     <a href='' class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
+            <?php $i++ ?>
             @endforeach
         </tbody>
     </table>
+    {{ $data -> links() }}
 </div>
 <!-- AKHIR DATA -->
 @endsection
