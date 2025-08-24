@@ -96,6 +96,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        return view('/');
+        mahasiswa::where('nim', $id)->delete();
+        return redirect()->to('mahasiswa')->with('success', 'Berhasil Melakukan Delete Data');
     }
 }
